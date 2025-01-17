@@ -15,4 +15,4 @@ The **Bank Application** is a **Java-based console application** that simulates 
 To use this project:
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/Bank-App.git
+   git clone https://github.com/your-username/CodeAlpha_Project_BankApplicaion.git
