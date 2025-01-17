@@ -15,7 +15,8 @@ public class Main {
             System.out.println("1. Deposit");
             System.out.println("2. Withdraw");
             System.out.println("3. Check Balance");
-            System.out.println("4. Exit");
+            System.out.println("4. Account Details");
+            System.out.println("5. Exit");
             System.out.print("Enter your choice: ");
             int choice = uInput.nextInt();
 
@@ -47,6 +48,13 @@ public class Main {
                     break;
 
                 case 4:
+                    System.out.print("Enter account number: ");
+                    int detailAccount = uInput.nextInt();
+                    // Handle balance checking based on account number
+                    handleAccount(detailAccount, account1, account2, account3);
+                    break;
+
+                case 5:
                     System.out.println("Exiting the Bank App.");
                     uInput.close();
                     return;
@@ -98,6 +106,19 @@ public class Main {
             account2.checkBalance(accountNumber);
         } else if (account3.getAccountNumber() == accountNumber) {
             account3.checkBalance(accountNumber);
+        } else {
+            System.out.println("Account number not found.");
+        }
+    }
+
+
+    private static void handleAccount(int accountNumber, BankApp account1, BankApp account2, BankApp account3) {
+        if (account1.getAccountNumber() == accountNumber) {
+            account1.accountDetail(accountNumber);
+        } else if (account2.getAccountNumber() == accountNumber) {
+            account2.accountDetail(accountNumber);
+        } else if (account3.getAccountNumber() == accountNumber) {
+            account3.accountDetail(accountNumber);
         } else {
             System.out.println("Account number not found.");
         }

@@ -1,31 +1,23 @@
 public class BankApp implements BankAppInterface {
-
-    private String name;
-    private int accountNumber;
+    private final String name;
+    private final int accountNumber;
     private int initialDeposit;
-    public int totalAmount;
+    private int totalAmount;
 
     public BankApp(String name, int accountNumber, int initialDeposit) {
         this.name = name;
         this.accountNumber = accountNumber;
         this.initialDeposit = initialDeposit;
-        this.totalAmount = initialDeposit; // Set initial deposit as starting balance
+        this.totalAmount = initialDeposit;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public int getAccountNumber() {
         return accountNumber;
-    }
-
-    public void setAccountNumber(int accountNumber) {
-        this.accountNumber = accountNumber;
     }
 
     public int getInitialDeposit() {
@@ -41,27 +33,33 @@ public class BankApp implements BankAppInterface {
         if (amount > 0) {
             totalAmount += amount;
         } else {
-            System.out.println("Enter amount greater than 0.0");
+            System.out.println("Deposit amount must be greater than 0.");
         }
         return totalAmount;
     }
 
     @Override
     public int withdraw(int amount) {
-        if (amount > 0 && amount <= totalAmount) {
-            totalAmount -= amount;
+        if (amount <= 0) {
+            System.out.println("Amount to withdraw must be greater than 0.");
+        } else if (amount > totalAmount) {
+            System.out.println("Your balance is insufficient!");
         } else {
-            System.out.println("Invalid withdrawal amount or insufficient funds.");
+            totalAmount -= amount;
         }
         return totalAmount;
     }
 
     @Override
     public void checkBalance(int accountNumber) {
-        if (this.accountNumber == accountNumber) {
-            System.out.println("Your total balance is : " + totalAmount);
-        } else {
-            System.out.println("Account number mismatch.");
-        }
+        System.out.println("Your total balance is: " + totalAmount);
+
+    }
+
+    @Override
+    public void accountDetail(int accountNumber) {
+        System.out.println("\n\nName : "+getName());
+        System.out.println("Account Number : " +getAccountNumber());
+        System.out.println("Total Amount : " +totalAmount);
     }
 }

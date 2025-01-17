@@ -1,5 +1,6 @@
 public interface BankAppInterface {
-    public int deposit(int amount);
-    public int withdraw(int amount);
-    public void checkBalance(int accountNumber);
+    int deposit(int amount);
+    int withdraw(int amount);
+    void checkBalance(int accountNumber);
+    void accountDetail(int accountNumber);
 }
